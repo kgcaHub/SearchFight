@@ -25,14 +25,25 @@ namespace SearchFight
 
                 configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
                 IConfigurationRoot configurationRoot = configuration.Build();
-                Constants.GoogleAuthUrl = configurationRoot.GetConnectionString("Google-Auth-Url");
-                Constants.GoogleAuthMail = configurationRoot.GetConnectionString("Google-Auth-Mail");
-                Constants.GoogleAuthPassword = configurationRoot.GetConnectionString("Google-Auth-Password");
-                Constants.GoogleAuthAppId = configurationRoot.GetConnectionString("Google-Auth-AppId");
-                Constants.GoogleSearchUrl = configurationRoot.GetConnectionString("Google-Search-Url");
 
-                Constants.BingSearchUrl = configurationRoot.GetConnectionString("Bing-Search-Url");
-                Constants.BingSearchApiKey = configurationRoot.GetConnectionString("Bing-Search-ApiKey");
+                Entity.Google.GoogleConfig _googleConfig = new Entity.Google.GoogleConfig();
+                configurationRoot.GetSection("GoogleConfig").Bind(_googleConfig);
+                Constants.GoogleConfig = _googleConfig;
+
+                Entity.Bing.BingConfig _bingConfig = new Entity.Bing.BingConfig();
+                configurationRoot.GetSection("BingConfig").Bind(_bingConfig);
+                Constants.BingConfig = _bingConfig;
+
+                // Constants.GoogleAuthUrl = configurationRoot.GetConnectionString("Google-Auth-Url");
+                // Constants.GoogleAuthMail = configurationRoot.GetConnectionString("Google-Auth-Mail");
+                // Constants.GoogleAuthPassword = configurationRoot.GetConnectionString("Google-Auth-Password");
+                // Constants.GoogleAuthAppId = configurationRoot.GetConnectionString("Google-Auth-AppId");
+                // Constants.GoogleSearchUrl = configurationRoot.GetConnectionString("Google-Search-Url");
+
+                // Constants.BingSearchUrl = configurationRoot.GetConnectionString("Bing-Search-Url");
+                // Constants.BingSearchApiKey = configurationRoot.GetConnectionString("Bing-Search-ApiKey");
+
+
             });
     }
 }

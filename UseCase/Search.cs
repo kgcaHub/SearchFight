@@ -9,14 +9,16 @@ namespace SearchFight.UseCase
         private Entity.SearchResult _TotalWinnerSearch;
         internal Search()
         {
-            Engines.Google _googleEngine = new Engines.Google();
-            Engines.Bing _bingEngine = new Engines.Bing();
-            Engines.DuckDuckGo _duckDuckGoEngine = new Engines.DuckDuckGo();
+            API.Engines.Google _googleEngine = new API.Engines.Google();
+            API.Engines.Bing _bingEngine = new API.Engines.Bing();
+            API.Engines.DuckDuckGo _duckDuckGoEngine = new API.Engines.DuckDuckGo();
+            API.Engines.Yahoo _yahoo = new API.Engines.Yahoo();
 
             this._AvailableEngines = new List<Engine>();
             this._AvailableEngines.Add(_googleEngine);
             this._AvailableEngines.Add(_bingEngine);
             this._AvailableEngines.Add(_duckDuckGoEngine);
+            this._AvailableEngines.Add(_yahoo);
 
             this._TotalWinnerSearch = new Entity.SearchResult();
         }
@@ -71,5 +73,7 @@ namespace SearchFight.UseCase
             this._AvailableEngines = null;
             this._TotalWinnerSearch = null;
         }
+
+
     }
 }

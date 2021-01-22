@@ -1,12 +1,12 @@
 using SearchFight.Entity;
 
-namespace SearchFight.UseCase.Engines
+namespace SearchFight.API.Engines
 {
-    internal class DuckDuckGo: Engine
+    internal class Yahoo: UseCase.Engine
     {
-        internal DuckDuckGo()
+        internal Yahoo()
         {
-            this.Name = "DuckDuckGo";
+            this.Name = "Yahoo";
         }
 
         internal override void ExecuteSearch(SearchResult searchResult)

@@ -13,7 +13,7 @@ namespace SearchFight.Api
         internal Bing()
         {
             this._BingHttpClient = new HttpClient();
-            this._BingHttpClient.DefaultRequestHeaders.Add("Bing-Search-ApiKey", Constants.BingSearchApiKey);
+            this._BingHttpClient.DefaultRequestHeaders.Add("Bing-Search-ApiKey", Constants.BingConfig.SearchApiKey);
         }
 
         public void Dispose()
@@ -29,7 +29,7 @@ namespace SearchFight.Api
             string _json = string.Format("{{\"query\":\"equals('{0}')\"}}", word);
             StringContent _stringContent = new StringContent(_json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage _response = this._BingHttpClient.PostAsync(Constants.BingSearchUrl, _stringContent).Result;
+            HttpResponseMessage _response = this._BingHttpClient.PostAsync(Constants.BingConfig.SearchUrl, _stringContent).Result;
 
             if (_response.IsSuccessStatusCode)
             {
