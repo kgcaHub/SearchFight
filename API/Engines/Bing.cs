@@ -1,10 +1,11 @@
 using System;
 using SearchFight.Entity;
 
-namespace SearchFight.UseCase.Engines
+namespace SearchFight.API.Engines
 {
-    internal class Bing : Engine
+    internal class Bing : UseCase.Engine
     {
+        //private HttpClient _BingHttpClient;
         internal Bing()
         {
             this.Name = "MSN Search";

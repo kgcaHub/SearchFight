@@ -1,9 +1,9 @@
 using System;
 using SearchFight.Entity;
 
-namespace SearchFight.UseCase.Engines
+namespace SearchFight.API.Engines
 {
-    internal class Google : Engine
+    internal class Google : UseCase.Engine
     {
         internal Google()
         {

@@ -2,7 +2,7 @@ using System;
 
 namespace SearchFight.UseCase
 {
-    internal class Engine: IDisposable
+    internal class Engine
     {
         internal string Name { get; set; }
         internal Entity.SearchResult WinnerResult { get; private set; }

@@ -14,7 +14,7 @@ namespace SearchFight.Api
         internal Google()
         {
             this._GoogleHttpClient = new HttpClient();
-            this._GoogleHttpClient.DefaultRequestHeaders.Add("Google-Auth-AppId", Constants.GoogleAuthAppId);
+            this._GoogleHttpClient.DefaultRequestHeaders.Add("Google-Auth-AppId", Constants.GoogleConfig.AuthAppId);
         }
 
         public void Dispose()
@@ -26,10 +26,10 @@ namespace SearchFight.Api
 
         internal void Auth()
         {
-            byte[] _byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", Constants.GoogleAuthMail, Constants.GoogleAuthPassword));
+            byte[] _byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", Constants.GoogleConfig.AuthMail, Constants.GoogleConfig.AuthPassword));
             this._GoogleHttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(_byteArray));
 
-            HttpResponseMessage _response = this._GoogleHttpClient.PostAsync(Constants.GoogleAuthUrl, null).Result;
+            HttpResponseMessage _response = this._GoogleHttpClient.PostAsync(Constants.GoogleConfig.AuthUrl, null).Result;
 
             if (_response.IsSuccessStatusCode)
             {
@@ -50,7 +50,7 @@ namespace SearchFight.Api
             string _json = string.Format("{{\"word\":\"{0}\"}}", word);
             StringContent _stringContent = new StringContent(_json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage _response = this._GoogleHttpClient.PostAsync(Constants.GoogleSearchUrl, _stringContent).Result;
+            HttpResponseMessage _response = this._GoogleHttpClient.PostAsync(Constants.GoogleConfig.SearchUrl, _stringContent).Result;
 
             if (_response.IsSuccessStatusCode)
             {
